@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.CodeAnalysis.CSharp;
 using RoslynQuoter;
 
@@ -8,13 +9,14 @@ namespace QuoterHost
     {
         static void Main(string[] args)
         {
-            var sourceText = "class C{}";
+            var sourceText = File.ReadAllText(args[0]);
             var sourceNode = CSharpSyntaxTree.ParseText(sourceText).GetRoot() as CSharpSyntaxNode;
             var quoter = new Quoter
             {
                 OpenParenthesisOnNewLine = false,
                 ClosingParenthesisOnNewLine = false,
-                UseDefaultFormatting = true
+                UseDefaultFormatting = true,
+                ShortenCodeWithUsingStatic = true
             };
 
             var generatedNode = quoter.Quote(sourceNode);
