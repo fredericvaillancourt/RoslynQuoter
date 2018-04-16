@@ -134,10 +134,11 @@ namespace QuoterWpf
         {
             var quoter = new Quoter
             {
-                OpenParenthesisOnNewLine = false,
-                ClosingParenthesisOnNewLine = false,
-                UseDefaultFormatting = true,
-                ShortenCodeWithUsingStatic = true
+                OpenParenthesisOnNewLine = OpenParenthesisOnNewLine,
+                ClosingParenthesisOnNewLine = ClosingParenthesisOnNewLine,
+                UseDefaultFormatting = UseDefaultFormatting,
+                ShortenCodeWithUsingStatic = ShortenCodeWithUsingStatic,
+                RemoveRedundantModifyingCalls = RemoveRedundantModifyingCalls
             };
 
             var generatedNode = quoter.Quote(_inputText, NodeKind);
