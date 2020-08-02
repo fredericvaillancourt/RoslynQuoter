@@ -2,10 +2,9 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using QuoterWpf.Annotations;
 using RoslynQuoter;
 
-namespace QuoterWpf
+namespace Quoter.WpfUI
 {
     public class MainWindowVM : INotifyPropertyChanged
     {
@@ -133,7 +132,7 @@ namespace QuoterWpf
 
         private void Generate()
         {
-            var quoter = new Quoter
+            var quoter = new RoslynQuoter.Quoter
             {
                 OpenParenthesisOnNewLine = OpenParenthesisOnNewLine,
                 ClosingParenthesisOnNewLine = ClosingParenthesisOnNewLine,
@@ -148,7 +147,6 @@ namespace QuoterWpf
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
